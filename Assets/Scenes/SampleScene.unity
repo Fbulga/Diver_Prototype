@@ -1317,6 +1317,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1048642522, guid: 64f748fb37d29ce4292b3f3fa2adc311, type: 3}
+      propertyPath: bloodParticleSystem
+      value: 
+      objectReference: {fileID: 8608149191575123836, guid: ae3fb459e84857b439982f6dade2ed1f,
+        type: 3}
     - target: {fileID: 2073797339, guid: 64f748fb37d29ce4292b3f3fa2adc311, type: 3}
       propertyPath: text
       value: 

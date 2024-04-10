@@ -27,6 +27,7 @@ public class EnemyMelee : Enemy
         playerLayer = enemyData.PlayerLayer;
         attackReady = true;
         counter = timeBetweenAttacks;
+        bloodParticles = enemyData.BloodParticleSystem;
     }
 
     //Metodo 1
@@ -124,4 +125,5 @@ public class EnemyMelee : Enemy
         direction = direction.normalized;
         transform.Translate(direction * speed * Time.deltaTime);
     }
+    
 }
