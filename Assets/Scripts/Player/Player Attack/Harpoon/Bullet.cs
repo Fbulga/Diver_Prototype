@@ -7,10 +7,9 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float destructionTime;
-
     [SerializeField] private float bulletDamage;
+    [SerializeField] private ParticleSystem impactParticle;
     
-    // Start is called before the first frame update
     void Start()
     {
         Destroy(this.gameObject, destructionTime);
@@ -19,9 +18,11 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.TryGetComponent(out IDamagable enemyGameObject) && 
-            (other.gameObject.layer == LayerMask.NameToLayer("Enemy") ||other.gameObject.layer == LayerMask.NameToLayer("Interactable")))
+            other.gameObject.layer != LayerMask.NameToLayer("Player"))
         {
             enemyGameObject.GetDamage(bulletDamage);
+            ParticleSystem ps = Instantiate(impactParticle,this.transform.position,this.transform.rotation);
+            ps.Play(true);
             Destroy(this.gameObject);
         }
 

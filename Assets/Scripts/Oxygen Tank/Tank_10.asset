@@ -17,3 +17,5 @@ MonoBehaviour:
   <ExplosionDamage>k__BackingField: 10
   <ExplosionParticleSystem>k__BackingField: {fileID: 5337107116809251209, guid: 8c2c664c1091454488c3973820272d55,
     type: 3}
+  <DetailMaterial>k__BackingField: {fileID: 2100000, guid: b254b128c84842c4f9f8eb6eb70892b5,
+    type: 2}

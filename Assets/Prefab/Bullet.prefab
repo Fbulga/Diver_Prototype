@@ -129,3 +129,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destructionTime: 3
   bulletDamage: 10
+  impactParticle: {fileID: 8608149191575123836, guid: 6706bc0f6ef186843b20d74d3270e26a,
+    type: 3}

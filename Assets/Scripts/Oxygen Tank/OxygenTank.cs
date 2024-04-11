@@ -9,6 +9,18 @@ public class OxygenTank : MonoBehaviour, IInteractable, IDamagable
 {
     [SerializeField] private OxygenTankType oxygenTank;
 
+    private MeshRenderer _renderer;
+
+    private void Awake()
+    {
+        _renderer = GetComponent<MeshRenderer>();
+    }
+
+    private void Start()
+    {
+        _renderer.materials[1].color = oxygenTank.DetailMaterial.color;
+    }
+
     private void OxygenTankInteract()
     {
         OxygenReservoir.Instance.AddOxygen(oxygenTank.OxygenCapacity);
