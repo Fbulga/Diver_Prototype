@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
@@ -8,7 +6,7 @@ public class MouseLook : MonoBehaviour
     [SerializeField] private Transform playerBody;
     [SerializeField] private float cameraRotationLimits;
 
-    private float xRotation;
+    private float _xRotation;
 
     void Start()
     {
@@ -20,10 +18,10 @@ public class MouseLook : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -cameraRotationLimits, cameraRotationLimits);
+        _xRotation -= mouseY;
+        _xRotation = Mathf.Clamp(_xRotation, -cameraRotationLimits, cameraRotationLimits);
 
-        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        transform.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
     }
 }

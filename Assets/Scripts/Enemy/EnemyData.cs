@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EnemyData" , menuName = "Enemy")]
+[CreateAssetMenu(fileName = "EnemyData" , menuName = "Enemy/EnemyData")]
 public class EnemyData : ScriptableObject
 {
     [field: SerializeField] public float Life { get; private set; }
