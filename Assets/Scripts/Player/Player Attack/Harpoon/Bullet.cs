@@ -13,8 +13,7 @@ public class Bullet : MonoBehaviour
     
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.TryGetComponent(out IDamagable enemyGameObject) && 
-            other.gameObject.layer != LayerMask.NameToLayer("Player"))
+        if (other.gameObject.TryGetComponent(out IDamagable enemyGameObject))
         {
             enemyGameObject.GetDamage(bulletDamage);
             ParticleSystem ps = Instantiate(impactParticle,this.transform.position,this.transform.rotation);

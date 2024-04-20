@@ -1,24 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
+
+using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamagable, IEnemy
 {
-     protected float life;
-     protected float attack;
-     protected float speed;
-     protected LayerMask playerLayer;
-     protected ParticleSystem bloodParticles;
+     protected float Life;
+     protected float Attack;
+     protected float Speed;
+     protected ParticleSystem BloodParticles;
+     protected bool AttackReady;
+     protected float Counter;
 
     public void GetDamage(float damage)
     {
-        life -= damage;
-        Debug.Log("Enemy Damaged. Life left: " + life);
-        if(life <= 0f)
+        Life -= damage;
+        Debug.Log("Enemy Damaged. Life left: " + Life);
+        if(Life <= 0f)
         {
             Destroy(this.gameObject);
-            ParticleSystem ps = Instantiate(bloodParticles,this.transform.position,this.transform.rotation);
+            ParticleSystem ps = Instantiate(BloodParticles,this.transform.position,this.transform.rotation);
             ps.Play(true);
         }
     }
+
+    protected void RotateTowardPlayer(Collider player)
+    {
+        Vector3 playerPosition = player.gameObject.transform.position;
+        Quaternion lookAt = Quaternion.LookRotation(playerPosition -transform.position);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookAt, Speed);
+    }
+
+
 }
