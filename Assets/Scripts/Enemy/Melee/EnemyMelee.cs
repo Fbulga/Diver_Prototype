@@ -1,20 +1,22 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 
 public class EnemyMelee : Enemy
 {
     [SerializeField] private EnemyData enemyData;
-    [SerializeField] private int timeBetweenAttacks;
     private Vector3 _distance;
-    
+    [SerializeField] private Rigidbody _rb;
     void Start()
     {
         Life = enemyData.Life;
         Speed = enemyData.Speed;
         Attack = enemyData.Attack;
         AttackReady = true;
-        Counter = timeBetweenAttacks;
+        Counter = enemyData.TimeBetweenAttacks;
         BloodParticles = enemyData.BloodParticleSystem;
+ 
+
     }
     private void OnTriggerStay(Collider player)
     {
@@ -30,7 +32,7 @@ public class EnemyMelee : Enemy
             else if (!AttackReady)
             {
                 Counter += Time.deltaTime;
-                if (Counter >= timeBetweenAttacks)
+                if (Counter >= enemyData.TimeBetweenAttacks)
                 {
                     AttackReady = true;
                     Counter = 0f;
@@ -55,6 +57,6 @@ public class EnemyMelee : Enemy
     private void Follow(Vector3 direction)
     {
         direction = direction.normalized;
-        transform.Translate(direction * Speed * Time.deltaTime);
+        _rb.AddForce((direction*enemyData.ImpulseForce),ForceMode.Impulse);
     }
 }

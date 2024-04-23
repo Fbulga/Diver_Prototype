@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24c090df886e99f469013d1232021fd0, type: 3}
-  m_Name: Tank_25
+  m_Name: Tank_50
   m_EditorClassIdentifier: 
-  <OxygenCapacity>k__BackingField: 25
+  <OxygenCapacity>k__BackingField: 50
   <ExplosionRadius>k__BackingField: 3.75
-  <ExplosionDamage>k__BackingField: 25
+  <ExplosionDamage>k__BackingField: 50
   <ExplosionParticleSystem>k__BackingField: {fileID: 5337107116809251209, guid: 8c2c664c1091454488c3973820272d55,
     type: 3}
-  <DetailMaterial>k__BackingField: {fileID: 2100000, guid: bb205cfb51257204d803a64966bed321,
+  <DetailMaterial>k__BackingField: {fileID: 2100000, guid: 7c11b97983f9a594c90bbc7806120ee8,
     type: 2}

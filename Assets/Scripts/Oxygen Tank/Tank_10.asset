@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tank_10
   m_EditorClassIdentifier: 
   <OxygenCapacity>k__BackingField: 10
-  <ExplosionRadius>k__BackingField: 4.5
+  <ExplosionRadius>k__BackingField: 3.75
   <ExplosionDamage>k__BackingField: 10
   <ExplosionParticleSystem>k__BackingField: {fileID: 5337107116809251209, guid: 8c2c664c1091454488c3973820272d55,
     type: 3}

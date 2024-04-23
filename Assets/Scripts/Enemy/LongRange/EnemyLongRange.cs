@@ -8,7 +8,6 @@ public class EnemyLongRange : Enemy
     [SerializeField] private Transform shootingPoint;
     [SerializeField] private ParticleSystem shootingParticles;
     
-    [SerializeField] private int timeBetweenAttacks;
 
     private float _bulletSpeed;
     // Start is called before the first frame update
@@ -19,7 +18,7 @@ public class EnemyLongRange : Enemy
         Attack = enemyData.Attack;
         AttackReady = true;
         Speed = enemyData.Speed;
-        Counter = timeBetweenAttacks;
+        Counter = enemyData.TimeBetweenAttacks;
         BloodParticles = enemyData.BloodParticleSystem;
     }
     
@@ -36,7 +35,7 @@ public class EnemyLongRange : Enemy
             else if (!AttackReady)
             {
                 Counter += Time.deltaTime;
-                if (Counter >= timeBetweenAttacks)
+                if (Counter >= enemyData.TimeBetweenAttacks)
                 {
                     AttackReady = true;
                     Counter = 0f;

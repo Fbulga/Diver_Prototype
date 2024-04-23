@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5893321639507343010}
   - component: {fileID: 7378747062100834567}
   - component: {fileID: 4720445388881579469}
+  - component: {fileID: 1131517165}
   - component: {fileID: 3844501088180378463}
   - component: {fileID: 2262571036848044092}
   - component: {fileID: 3791093784913972377}
@@ -86,6 +87,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &1131517165
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6521942757316324376}
+  serializedVersion: 2
+  m_Mass: 100
+  m_Drag: 10
+  m_AngularDrag: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 64
+  m_CollisionDetection: 0
 --- !u!135 &3844501088180378463
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -125,4 +142,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: bd56718f8275501489842dc9814b7354, type: 2}
-  timeBetweenAttacks: 3
+  _rb: {fileID: 1131517165}

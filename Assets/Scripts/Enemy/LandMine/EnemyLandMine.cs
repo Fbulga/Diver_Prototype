@@ -7,8 +7,8 @@ public class EnemyLandMine : Enemy
     [SerializeField] private GameObject bodyLandMine;
 
     [SerializeField] private SphereCollider _collider;
-    
-    [SerializeField] private int timeBetweenAttacks;
+
+    private int explodingScale;
 
 
     private bool _playerInRange;
@@ -21,22 +21,18 @@ public class EnemyLandMine : Enemy
         _bombForce = enemyData.ImpulseForce;
         Attack = enemyData.Attack;
         Speed = enemyData.Speed;
-        Counter = timeBetweenAttacks;
         BloodParticles = enemyData.BloodParticleSystem;
-
+        explodingScale = enemyData.TimeBetweenAttacks;
         _initialScale = bodyLandMine.transform.localScale;
     }
 
     private void Update()
     {
-        
         if (_playerInRange == false && Mathf.RoundToInt(bodyLandMine.transform.localScale.magnitude) != Mathf.RoundToInt(_initialScale.magnitude))
         {
-            
             bodyLandMine.transform.localScale -= new Vector3(1,1,1) * Time.deltaTime;
             _collider.radius -= Time.deltaTime/2;
-            
-        } 
+        }
     }
 
     private void OnTriggerStay(Collider player)
@@ -49,7 +45,7 @@ public class EnemyLandMine : Enemy
             _collider.radius += Time.deltaTime/2;
         }
 
-        if (bodyLandMine.transform.localScale.magnitude >= new Vector3(3, 3, 3).magnitude)
+        if (bodyLandMine.transform.localScale.magnitude >= new Vector3(explodingScale, explodingScale, explodingScale).magnitude)
         {
             Explode(player);
         }
@@ -67,6 +63,8 @@ public class EnemyLandMine : Enemy
             Destroy(this.gameObject);
             player.gameObject.TryGetComponent(out Rigidbody rigidbody);
             oxygenReservoir.GetDamage(Attack);
+            ParticleSystem ps = Instantiate(BloodParticles,this.transform.position,this.transform.rotation);
+            ps.Play(true);
             rigidbody.AddForce((player.transform.position - this.transform.position).normalized*_bombForce,ForceMode.Impulse);
         }
     }

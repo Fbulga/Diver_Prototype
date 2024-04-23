@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour, IDamagable, IEnemy
      protected ParticleSystem BloodParticles;
      protected bool AttackReady;
      protected float Counter;
+     protected int TimeBetweenAttacks;
 
     public void GetDamage(float damage)
     {

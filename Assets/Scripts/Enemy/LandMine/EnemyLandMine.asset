@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Life>k__BackingField: 50
   <Attack>k__BackingField: 75
-  <Speed>k__BackingField: 0
+  <Speed>k__BackingField: 5
   <ImpulseForce>k__BackingField: 500
   <BloodParticleSystem>k__BackingField: {fileID: 5337107116809251209, guid: 0261d6fd08013914f88dab5b6fff8147,
     type: 3}
+  <TimeBetweenAttacks>k__BackingField: 4

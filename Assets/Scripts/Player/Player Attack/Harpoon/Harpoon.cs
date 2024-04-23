@@ -28,7 +28,7 @@ public class Harpoon : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && bulletAmmo>0)
         {
             var bullet = Instantiate(bulletPrefab, shootingPoint.position, Quaternion.identity);
-            bullet.GetComponent<Rigidbody>().velocity = shootingPoint.up * bulletSpeed;
+            bullet.GetComponent<Rigidbody>().velocity = shootingPoint.forward * bulletSpeed;
             bulletAmmo--;
             var ps = Instantiate(bloodParticleSystem,shootingPoint.transform);
             ps.Play(true);

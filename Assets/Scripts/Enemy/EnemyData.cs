@@ -8,4 +8,5 @@ public class EnemyData : ScriptableObject
     [field: SerializeField] public float Speed { get; private set; }
     [field: SerializeField] public int ImpulseForce { get; private set; }
     [field: SerializeField] public ParticleSystem BloodParticleSystem { get; private set; }
+    [field: SerializeField] public int TimeBetweenAttacks { get; private set; }
 }
