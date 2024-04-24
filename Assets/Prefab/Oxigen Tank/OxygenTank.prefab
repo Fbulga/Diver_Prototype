@@ -75,7 +75,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: dd00f0bdfb1893f4fb7a093a75ba0f96,
         type: 3}
       propertyPath: m_Name
-      value: OxygenTank (1)
+      value: OxygenTank
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dd00f0bdfb1893f4fb7a093a75ba0f96,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd00f0bdfb1893f4fb7a093a75ba0f96, type: 3}
