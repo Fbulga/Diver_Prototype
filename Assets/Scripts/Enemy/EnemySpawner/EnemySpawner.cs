@@ -2,7 +2,7 @@ using UnityEngine;
 using Factory;
 using System;
 using System.Collections.Generic;
-using Commands;
+using Unity.VisualScripting;
 using UnityEditor;
 
 public class EnemySpawner : MonoBehaviour
@@ -35,7 +35,10 @@ public class EnemySpawner : MonoBehaviour
                 enemyType = "Melee";
                 break;
         }
-        
+    }
+
+    private void Start()
+    {
         GenerateEnemy(enemyType);
     }
 
@@ -50,6 +53,5 @@ public class EnemySpawner : MonoBehaviour
         EventQueue.Instance.EnqueueCommand(enemyCommand);
     }
     
-
 }
 

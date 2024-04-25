@@ -60,11 +60,9 @@ public class EnemyLandMine : Enemy
     {
         if (player.gameObject.TryGetComponent(out IDamagable oxygenReservoir))
         {
-            Destroy(this.gameObject);
-            player.gameObject.TryGetComponent(out Rigidbody rigidbody);
+            GetDamage(Life);
             oxygenReservoir.GetDamage(Attack);
-            ParticleSystem ps = Instantiate(BloodParticles,this.transform.position,this.transform.rotation);
-            ps.Play(true);
+            player.gameObject.TryGetComponent(out Rigidbody rigidbody);
             rigidbody.AddForce((player.transform.position - this.transform.position).normalized*_bombForce,ForceMode.Impulse);
         }
     }

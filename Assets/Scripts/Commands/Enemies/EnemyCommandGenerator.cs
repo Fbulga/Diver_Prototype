@@ -1,12 +1,12 @@
 using UnityEngine;
-using Commands;
+
 
 namespace Factory
 {
     [CreateAssetMenu(fileName = "EnemyCommandFactory", menuName = "EnemyCommandFactory", order = 0)]
     public class EnemyCommandGenerator : ScriptableObject
     {
-        [SerializeField] private FactoryInitializer enemyFactoryInitializer;
+        [SerializeField] private EnemyFactoryInitializer enemyFactoryInitializer;
 
         public bool TryGenerateEnemyCreationCommand(string enemyType, Vector3 position,Quaternion rotation, out ICommand command)
         {

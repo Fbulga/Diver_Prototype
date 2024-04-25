@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewFactoryInitializer", menuName = "Factory/EnemyInitializer", order = 0)]
-public class FactoryInitializer : ScriptableObject
+[CreateAssetMenu(fileName = "NewFactoryInitializer", menuName = "Factory/EnemyFactoryInitializer", order = 0)]
+public class EnemyFactoryInitializer : ScriptableObject
 {
     private EnemyFactory enemyFactory = new();
     [SerializeField] private Enemy meleePrefab;
