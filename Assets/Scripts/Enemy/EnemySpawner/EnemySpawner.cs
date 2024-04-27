@@ -1,5 +1,4 @@
 using UnityEngine;
-using Factory;
 using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -16,11 +15,11 @@ public class EnemySpawner : MonoBehaviour
         LongRange,
         Landmine
     }
-
-    [SerializeField] private EnemyType type = new EnemyType();
+    
+    [SerializeField] private EnemyType EnemyID;
     private void Awake()
     {
-        switch (type)
+        switch (EnemyID)
         {
             case EnemyType.Melee:
                 enemyType = "Melee";

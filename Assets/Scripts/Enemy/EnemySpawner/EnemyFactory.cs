@@ -6,7 +6,7 @@ public class EnemyFactory : AbstractFactory<Enemy>
     public const string ENEMY_MELEE = "Melee";
     public const string ENEMY_LONG_RANGE = "Long Range";
     public const string ENEMY_LANDMINE = "Landmine";
-
+    
     public bool Initialized { get; private set; }
     
     private Enemy enemyPrefab;
@@ -22,7 +22,6 @@ public class EnemyFactory : AbstractFactory<Enemy>
             case ENEMY_LANDMINE:
                 return enemyPrefab;
         }
-
         return default;
     }
 
@@ -31,5 +30,4 @@ public class EnemyFactory : AbstractFactory<Enemy>
         this.enemyPrefab = enemyPrefab;
         Initialized = true;
     }
-    
 }

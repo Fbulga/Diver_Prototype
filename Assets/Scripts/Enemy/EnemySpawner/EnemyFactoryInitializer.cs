@@ -4,25 +4,20 @@ using UnityEngine;
 public class EnemyFactoryInitializer : ScriptableObject
 {
     private EnemyFactory enemyFactory = new();
-    [SerializeField] private Enemy meleePrefab;
-    [SerializeField] private Enemy longRangePrefab;
-    [SerializeField] private Enemy landminePrefab;
+
+    [SerializeField] private EnemyData[] _enemyDatas;
 
     public Enemy GetEnemy(string enemyType)
     {
         if (!enemyFactory.Initialized)
         {
-            switch (enemyType)
+            foreach (var enemy in _enemyDatas)
             {
-                case EnemyFactory.ENEMY_MELEE:
-                    enemyFactory.Initialize(meleePrefab);
+                if (enemyType == enemy.ID)
+                {
+                    enemyFactory.Initialize(enemy.Prefab);
                     break;
-                case EnemyFactory.ENEMY_LONG_RANGE:
-                    enemyFactory.Initialize(longRangePrefab);
-                    break;
-                case EnemyFactory.ENEMY_LANDMINE:
-                    enemyFactory.Initialize(landminePrefab);
-                    break;
+                }
             }
         }
 
