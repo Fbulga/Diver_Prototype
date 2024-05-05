@@ -18,7 +18,7 @@ public class OxygenTank : MonoBehaviour, IInteractable, IDamagable
 
     private void OxygenTankInteract()
     {
-        OxygenReservoir.Instance.AddOxygen(oxygenTank.OxygenCapacity);
+        OxygenReservoir.Instance.addOxygen?.Invoke(oxygenTank.OxygenCapacity);
         Destroy(gameObject);
     }
 

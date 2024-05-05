@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System;
 
 
 public class OxygenReservoir : MonoBehaviour , IDamagable
@@ -8,6 +9,8 @@ public class OxygenReservoir : MonoBehaviour , IDamagable
     [SerializeField] private float currentOxygen;
     [SerializeField] private TextMeshProUGUI text;
 
+    public Action<float> addOxygen;
+    public Action<float> loseOxygenOvertime;
     public float CurrentOxygen
     {
         get => currentOxygen;
@@ -35,17 +38,17 @@ public class OxygenReservoir : MonoBehaviour , IDamagable
 
     public void Update()
     {
-        LooseOxygenOverTime(1f);
+        LoseOxygenOverTime(1f);
         currentOxygen = Mathf.Clamp(currentOxygen, 0, startingOxygen);
         DisplayText();
     }
 
-    public void AddOxygen(float oxygenAmount)
+    private void AddOxygen(float oxygenAmount)
     {
         CurrentOxygen += oxygenAmount;
     }
 
-    public void LooseOxygenOverTime(float multiplier)
+    public void LoseOxygenOverTime(float multiplier)
     {
         currentOxygen -= multiplier * Time.deltaTime;
     }
@@ -64,4 +67,26 @@ public class OxygenReservoir : MonoBehaviour , IDamagable
     {
         LooseOxygen(damage);
     }
+
+    private void OnEnable()
+    {
+        SubscribeEvents();
+    }
+    private void OnDisable()
+    {
+        UnsubscribeEvents();
+    }
+
+    private void SubscribeEvents()
+    {
+        loseOxygenOvertime += LoseOxygenOverTime;
+        addOxygen += AddOxygen;
+    }
+
+    private void UnsubscribeEvents()
+    {
+        addOxygen -= AddOxygen;
+        loseOxygenOvertime -= LoseOxygenOverTime;
+    }
+    
 }

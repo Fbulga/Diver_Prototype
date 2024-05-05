@@ -19,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Swim();
-
     }
 
     private void Swim()
@@ -41,14 +40,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    
-
     private void Sprint(float sprintMultiplier)
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {
             swimSpeed = originalSpeed * sprintMultiplier;
-            OxygenReservoir.Instance.LooseOxygenOverTime(sprintMultiplier);
+            OxygenReservoir.Instance.loseOxygenOvertime?.Invoke(sprintMultiplier);
         }
         else
         {
