@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IDamagable, IEnemy
+public class Enemy : MonoBehaviour, IDamagable, ISpawnable
 {
      protected float Life;
      protected float Attack;

@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf981112ad34a2a90a9efb2916459ce, type: 3}
   m_Name: EnemyMelee
   m_EditorClassIdentifier: 
+  <Prefab>k__BackingField: {fileID: 3071490538419136833, guid: c41e2347977048140b2544b74e10c61d,
+    type: 3}
+  <ID>k__BackingField: Melee
   <Life>k__BackingField: 50
   <Attack>k__BackingField: 10
   <Speed>k__BackingField: 25

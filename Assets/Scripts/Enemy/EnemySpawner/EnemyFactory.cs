@@ -3,31 +3,26 @@ using System.Collections.Generic;
 
 public class EnemyFactory : AbstractFactory<Enemy>
 {
-    public const string ENEMY_MELEE = "Melee";
-    public const string ENEMY_LONG_RANGE = "Long Range";
-    public const string ENEMY_LANDMINE = "Landmine";
-    
     public bool Initialized { get; private set; }
     
-    private Enemy enemyPrefab;
+    private EnemyData[] enemyDataArray;
     
-    public override Enemy CreateEnemy(string enemyType)
+    public override Enemy CreateSpawnable(string enemyID)
     {
-        switch (enemyType)
+        
+        foreach (var enemyData in enemyDataArray)
         {
-            case ENEMY_MELEE:
-                return enemyPrefab;
-            case ENEMY_LONG_RANGE:
-                return enemyPrefab;
-            case ENEMY_LANDMINE:
-                return enemyPrefab;
+            if (enemyData.ID == enemyID)
+            {
+                return enemyData.Prefab;
+            }
         }
         return default;
     }
 
-    public void Initialize(Enemy enemyPrefab)
+    public void Initialize(EnemyData[] enemyList)
     {
-        this.enemyPrefab = enemyPrefab;
+        enemyDataArray = enemyList;
         Initialized = true;
     }
 }

@@ -12,9 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a54a7902243a4b3bae2e33b46d61b2ae, type: 3}
   m_Name: EnemyFactoryInitializer
   m_EditorClassIdentifier: 
-  meleePrefab: {fileID: 3791093784913972377, guid: ebf68dd43fc26b146be7d025b5555718,
-    type: 3}
-  longRangePrefab: {fileID: 3196157353373920841, guid: 2130c8248f80b204e819992df964baca,
-    type: 3}
-  landminePrefab: {fileID: 8033210840219944180, guid: 83e99f2299ec7a1419eeb30bee1e1f42,
-    type: 3}
+  availableEnemiesData: {fileID: 11400000, guid: 89b0ea690c0764c4780f16d69d3d540d,
+    type: 2}

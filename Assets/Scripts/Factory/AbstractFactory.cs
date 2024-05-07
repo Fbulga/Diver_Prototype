@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public abstract class AbstractFactory<T> where T: IEnemy
+public abstract class AbstractFactory<T> where T: ISpawnable
 {
-   public abstract T CreateEnemy(string enemyName);
+   public abstract T CreateSpawnable(string enemyID);
 }

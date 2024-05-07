@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf981112ad34a2a90a9efb2916459ce, type: 3}
   m_Name: EnemyLongRange
   m_EditorClassIdentifier: 
+  <Prefab>k__BackingField: {fileID: 3196157353373920841, guid: 2130c8248f80b204e819992df964baca,
+    type: 3}
+  <ID>k__BackingField: Long Range
   <Life>k__BackingField: 75
   <Attack>k__BackingField: 15
   <Speed>k__BackingField: 12

@@ -1,27 +1,28 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "NewFactoryInitializer", menuName = "Factory/EnemyFactoryInitializer", order = 0)]
 public class EnemyFactoryInitializer : ScriptableObject
 {
     private EnemyFactory enemyFactory = new();
 
-    [SerializeField] private EnemyData[] _enemyDatas;
+    [SerializeField] private AvailableEnemyData availableEnemiesData;
 
-    public Enemy GetEnemy(string enemyType)
+    public Enemy GetEnemy(string enemyID)
     {
         if (!enemyFactory.Initialized)
         {
-            foreach (var enemy in _enemyDatas)
+            foreach (var enemyData in availableEnemiesData.availableEnemies)
             {
-                if (enemyType == enemy.ID)
+                if (enemyID == enemyData.ID)
                 {
-                    enemyFactory.Initialize(enemy.Prefab);
+                    enemyFactory.Initialize(availableEnemiesData.availableEnemies);
                     break;
                 }
             }
         }
 
-        return enemyFactory.CreateEnemy(enemyType);
+        return enemyFactory.CreateSpawnable(enemyID);
     }
 
 }

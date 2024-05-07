@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf981112ad34a2a90a9efb2916459ce, type: 3}
   m_Name: EnemyLandMine
   m_EditorClassIdentifier: 
+  <Prefab>k__BackingField: {fileID: 8033210840219944180, guid: 83e99f2299ec7a1419eeb30bee1e1f42,
+    type: 3}
+  <ID>k__BackingField: Landmine
   <Life>k__BackingField: 50
   <Attack>k__BackingField: 75
   <Speed>k__BackingField: 5

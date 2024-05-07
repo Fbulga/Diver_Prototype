@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyData : ScriptableObject
 {
     [field: SerializeField] public Enemy Prefab { get; private set; }
-    
     [field: SerializeField] public string ID { get; private set; }
     [field: SerializeField] public float Life { get; private set; }
     [field: SerializeField] public float Attack { get; private set; }
