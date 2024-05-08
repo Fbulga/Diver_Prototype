@@ -42,6 +42,5 @@ public class EventQueue : MonoBehaviour
 
         currentCommands.Clear();
     }
-
-
+    
 }

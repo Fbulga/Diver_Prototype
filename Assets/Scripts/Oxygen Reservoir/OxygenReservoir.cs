@@ -7,10 +7,13 @@ public class OxygenReservoir : MonoBehaviour , IDamagable
 {
     [SerializeField] private float startingOxygen;
     [SerializeField] private float currentOxygen;
-    [SerializeField] private TextMeshProUGUI text;
+
+    [SerializeField] private AudioSource playerScream;
 
     public Action<float> addOxygen;
     public Action<float> loseOxygenOvertime;
+    
+    private IOxygenCanvasProvider oxygenCanvasProvider;
     public float CurrentOxygen
     {
         get => currentOxygen;
@@ -33,6 +36,7 @@ public class OxygenReservoir : MonoBehaviour , IDamagable
 
     public void Start()
     {
+        oxygenCanvasProvider = MainCanvas.Instance;
         currentOxygen = startingOxygen;
     }
 
@@ -40,7 +44,7 @@ public class OxygenReservoir : MonoBehaviour , IDamagable
     {
         LoseOxygenOverTime(1f);
         currentOxygen = Mathf.Clamp(currentOxygen, 0, startingOxygen);
-        DisplayText();
+        oxygenCanvasProvider.OxygenCanvas.DisplayText(currentOxygen,startingOxygen);
     }
 
     private void AddOxygen(float oxygenAmount)
@@ -56,11 +60,7 @@ public class OxygenReservoir : MonoBehaviour , IDamagable
     private void LooseOxygen(float amount)
     {
         currentOxygen -= amount;
-    }
-
-    private void DisplayText()
-    {
-        text.text = "Oxygen Left: " + Mathf.RoundToInt(CurrentOxygen) + "/" + startingOxygen;
+        playerScream.Play();
     }
 
     public void GetDamage(float damage)

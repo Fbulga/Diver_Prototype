@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Harpoon : MonoBehaviour
@@ -6,11 +7,10 @@ public class Harpoon : MonoBehaviour
     [SerializeField] private float bulletSpeed;
     [SerializeField] private Transform shootingPoint;
     [SerializeField] private ParticleSystem bloodParticleSystem;
-
     [SerializeField] private int bulletAmmo;
-    // Update is called once per frame
 
-
+    private IAmmoCanvasProvider ammoCanvasProvider;
+    
     public static Harpoon Instance;
     private void Awake()
     {
@@ -23,6 +23,12 @@ public class Harpoon : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void Start()
+    {
+        ammoCanvasProvider = MainCanvas.Instance;
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && bulletAmmo>0)
@@ -30,6 +36,7 @@ public class Harpoon : MonoBehaviour
             var bullet = Instantiate(bulletPrefab, shootingPoint.position, Quaternion.identity);
             bullet.GetComponent<Rigidbody>().velocity = shootingPoint.forward * bulletSpeed;
             bulletAmmo--;
+            ammoCanvasProvider.AmmoCanvas.DisplayText(bulletAmmo);
             var ps = Instantiate(bloodParticleSystem,shootingPoint.transform);
             ps.Play(true);
         }
@@ -38,6 +45,7 @@ public class Harpoon : MonoBehaviour
     public void AddAmmo(int ammoAmount)
     {
         bulletAmmo += ammoAmount;
+        ammoCanvasProvider.AmmoCanvas.DisplayText(bulletAmmo);
     }
     
    

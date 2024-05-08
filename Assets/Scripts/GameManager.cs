@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int totalTreasureAmount;
 
+    private ITreasuresCanvasProvider treasuresCanvasProvider;
     
     private void Awake()
     {
@@ -26,11 +27,13 @@ public class GameManager : MonoBehaviour
         }
         SubscribeEvents();
     }
-    void Start()
+    
+    private void Start()
     {
+        treasuresCanvasProvider = MainCanvas.Instance;
     }
     
-    void Update()
+    private void Update()
     {
         if (totalTreasureAmount == 0)
         {
@@ -52,9 +55,19 @@ public class GameManager : MonoBehaviour
     private void AddTreasure()
     {
         totalTreasureAmount++;
+        treasuresCanvasProvider.TreasuresCanvas.DisplayText(totalTreasureAmount);
     }
     private void TakeTreasure()
     {
         totalTreasureAmount--;
+        treasuresCanvasProvider.TreasuresCanvas.DisplayText(totalTreasureAmount);
+    }
+
+    private void OnDisable()
+    {
+        UnsubscribeEvents();
     }
 }
+
+
+    
