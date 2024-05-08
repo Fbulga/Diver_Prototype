@@ -6,6 +6,11 @@ using UnityEditor;
 
 public class MainMenu : MonoBehaviour
 {
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+    }
     public void StartGame()
     {
         SceneManager.LoadScene(1);
@@ -18,4 +23,15 @@ public class MainMenu : MonoBehaviour
         EditorApplication.isPlaying = false;
         #endif
     }
+
+    public void Tutorial()
+    {
+        SceneManager.LoadScene(3);
+    }
+    
+    public void Menu()
+    {
+        SceneManager.LoadScene(0);
+    }
+    
 }

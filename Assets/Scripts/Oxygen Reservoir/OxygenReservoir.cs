@@ -13,7 +13,7 @@ public class OxygenReservoir : MonoBehaviour , IDamagable
     public Action<float> addOxygen;
     public Action<float> loseOxygenOvertime;
     
-    private IOxygenCanvasProvider oxygenCanvasProvider;
+    private IOxygenCanvasProvider oxygenCanvasProvider => MainCanvas.Instance;
     public float CurrentOxygen
     {
         get => currentOxygen;
@@ -36,7 +36,6 @@ public class OxygenReservoir : MonoBehaviour , IDamagable
 
     public void Start()
     {
-        oxygenCanvasProvider = MainCanvas.Instance;
         currentOxygen = startingOxygen;
     }
 
@@ -45,6 +44,10 @@ public class OxygenReservoir : MonoBehaviour , IDamagable
         LoseOxygenOverTime(1f);
         currentOxygen = Mathf.Clamp(currentOxygen, 0, startingOxygen);
         oxygenCanvasProvider.OxygenCanvas.DisplayText(currentOxygen,startingOxygen);
+        if (currentOxygen <= 0)
+        {
+            GameManager.Instance.noOxygenLeft?.Invoke();
+        }
     }
 
     private void AddOxygen(float oxygenAmount)

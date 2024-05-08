@@ -1,7 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 
 public class GameManager : MonoBehaviour
@@ -10,10 +10,11 @@ public class GameManager : MonoBehaviour
     
     public Action addTotalTreasure;
     public Action grabTreasure;
+    public Action noOxygenLeft;
 
     [SerializeField] private int totalTreasureAmount;
 
-    private ITreasuresCanvasProvider treasuresCanvasProvider;
+    private ITreasuresCanvasProvider treasuresCanvasProvider => MainCanvas.Instance;
     
     private void Awake()
     {
@@ -28,11 +29,6 @@ public class GameManager : MonoBehaviour
         SubscribeEvents();
     }
     
-    private void Start()
-    {
-        treasuresCanvasProvider = MainCanvas.Instance;
-    }
-    
     private void Update()
     {
         if (totalTreasureAmount == 0)
@@ -45,6 +41,7 @@ public class GameManager : MonoBehaviour
     {
         addTotalTreasure += AddTreasure;
         grabTreasure += TakeTreasure;
+        noOxygenLeft += GameOver;
     }
     private void UnsubscribeEvents()
     {
@@ -63,6 +60,10 @@ public class GameManager : MonoBehaviour
         treasuresCanvasProvider.TreasuresCanvas.DisplayText(totalTreasureAmount);
     }
 
+    private void GameOver()
+    {
+        SceneManager.LoadScene(2);
+    }
     private void OnDisable()
     {
         UnsubscribeEvents();

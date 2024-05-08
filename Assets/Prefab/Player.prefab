@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1f602c4bad383f4ca497c80d8ad01f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swimSpeed: 7.5
+  swimSpeed: 3
   sinkSpeed: 0.5
   cam: {fileID: 1938189642164255182}
   sprintMultiplier: 1.5
@@ -245,7 +245,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingOxygen: 100
   currentOxygen: 0
-  text: {fileID: 0}
   playerScream: {fileID: 1874084444}
 --- !u!114 &2073797341
 MonoBehaviour:

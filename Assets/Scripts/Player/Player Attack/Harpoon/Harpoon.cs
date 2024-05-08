@@ -9,7 +9,7 @@ public class Harpoon : MonoBehaviour
     [SerializeField] private ParticleSystem bloodParticleSystem;
     [SerializeField] private int bulletAmmo;
 
-    private IAmmoCanvasProvider ammoCanvasProvider;
+    private IAmmoCanvasProvider ammoCanvasProvider => MainCanvas.Instance;
     
     public static Harpoon Instance;
     private void Awake()
@@ -26,7 +26,7 @@ public class Harpoon : MonoBehaviour
 
     private void Start()
     {
-        ammoCanvasProvider = MainCanvas.Instance;
+        ammoCanvasProvider.AmmoCanvas.DisplayText(bulletAmmo);
     }
 
     void Update()
