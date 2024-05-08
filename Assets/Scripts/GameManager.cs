@@ -2,8 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -31,10 +29,7 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
-        if (totalTreasureAmount == 0)
-        {
-            Debug.Log("Ganaste");
-        }
+
     }
     
     private void SubscribeEvents()
@@ -58,6 +53,10 @@ public class GameManager : MonoBehaviour
     {
         totalTreasureAmount--;
         treasuresCanvasProvider.TreasuresCanvas.DisplayText(totalTreasureAmount);
+        if (totalTreasureAmount <= 0)
+        {
+            SceneManager.LoadScene(4);
+        }
     }
 
     private void GameOver()
