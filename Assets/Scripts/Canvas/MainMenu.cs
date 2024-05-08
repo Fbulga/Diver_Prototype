@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
     }
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("TestScene");
     }
 
     public void ExitGame()
@@ -26,12 +26,12 @@ public class MainMenu : MonoBehaviour
 
     public void Tutorial()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene("TutorialScene");
     }
     
     public void Menu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MainMenu");
     }
     
 }

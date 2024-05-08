@@ -27,11 +27,6 @@ public class GameManager : MonoBehaviour
         SubscribeEvents();
     }
     
-    private void Update()
-    {
-
-    }
-    
     private void SubscribeEvents()
     {
         addTotalTreasure += AddTreasure;
@@ -55,13 +50,13 @@ public class GameManager : MonoBehaviour
         treasuresCanvasProvider.TreasuresCanvas.DisplayText(totalTreasureAmount);
         if (totalTreasureAmount <= 0)
         {
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene("WinScene");
         }
     }
 
     private void GameOver()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("DefeatScene");
     }
     private void OnDisable()
     {
